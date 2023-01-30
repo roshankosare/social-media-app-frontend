@@ -1,17 +1,25 @@
-import React from "react";
+
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import {  AuthProvider } from "./context/authContext";
-import Auth from "./pages/auth/Auth";
+import Header from "./components/header/Header";
+import AuthPage from "./pages/auth/AuthPage";
+import Home from "./pages/home/Home";
 
 function App() {
+
+ 
   return (
-    <AuthProvider>
+    <div className=" min-h-screen px-4 py-1 pb-10 bg-slate-100">
+      <Header />
+
       <Routes>
-        <Route path="/" element={<h1>Welcome</h1>}></Route>
-        <Route path="/auth" element={<Auth/>}></Route>
+        <Route
+          path="/"
+          element={<Home/>}
+        ></Route>
+        <Route path="/auth" element={<AuthPage />}></Route>
       </Routes>
-    </AuthProvider>
+    </div>
   );
 }
 

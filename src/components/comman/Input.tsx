@@ -1,12 +1,12 @@
 import React from "react";
 
-interface IInputProps {
+interface InputProps {
   type: string;
-  handleFunction?: (value: string | any) => {};
+  handleFunction?: (value?:any)=>void;
   value?: string | number | any;
   placeholder?: string;
 }
-const Input = ({ type, handleFunction, value, placeholder }: IInputProps) => {
+const Input = ({ type, handleFunction, value, placeholder }: InputProps) => {
   let style: string =
     "w-full h-10 border-gray-500 border rounded-sm px-2 py-2 my-5";
 
@@ -16,7 +16,9 @@ const Input = ({ type, handleFunction, value, placeholder }: IInputProps) => {
         className={style}
         type={type}
         value={value}
-        onChange={handleFunction}
+        onChange={(e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement >) => {
+          handleFunction?.(e.target.value);
+        }}
         placeholder={placeholder}
       />
     </>

@@ -1,12 +1,17 @@
 import React from 'react'
-import Login from '../../components/login/Login'
+import LogIn from '../../components/login/Login'
+import SignUp from '../../components/signup/SignUp';
+import { useAuthModel } from './AuthModelContext'
 
 const Auth = () => {
+  const {model} = useAuthModel();
 
   return (
-    <div>
-        <Login/>
-    </div>
+ <>{
+  model === "login"?<LogIn/>:<SignUp/>
+ }
+
+ </>
   )
 }
 
